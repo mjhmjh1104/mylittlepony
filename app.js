@@ -16,5 +16,6 @@ app.get('*', function(req, res) {
   res.render('main');
 });
 
-app.listen(process.env.PORT || 3000);
+var port = process.env.PORT || 3000;
+app.listen(port);
 console.log('Server Running');
