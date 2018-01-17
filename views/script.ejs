@@ -1,0 +1,38 @@
+<script type="text/javascript">
+  MLPChangeImage('MLP', Math.floor(Math.random() * 6));
+  function MLPChangeImage(Id, Number) {
+    document.getElementById(Id).id = "MLP_cover_" + (Number + 1);
+  }
+  function Clicked(C) {
+    var element, i, j;
+    if (C == 'MLP') {
+      element = document.getElementsByClassName('parent');
+      for (i = 0; i < element.length; i++) element[i].style.display = 'none';
+      element = document.getElementsByClassName('child_MLP');
+      for (i = 0; i < element.length; i++) element[i].style.display = 'inline-block';
+    }
+    else {
+      for (i = 0; i < 1; i++) {
+        if (C == 'MLP_season' + (i + 1)) {
+          element = document.getElementsByClassName('child');
+          for (j = 0; j < element.length; j++) element[j].style.display = 'none';
+          element = document.getElementsByClassName('child_MLP_season1');
+          for (j = 0; j < element.length; j++) {
+            element[j].style.display = 'inline-block';
+            if (j < 9) element[j].style.backgroundImage = "url(../../../../../../img/MLP_1x0" + (j + 1) + ".png)";
+            else element[j].style.backgroundImage = "url(../../../../../../img/MLP_1x" + (j + 1) + ".png)";
+          }
+        }
+      }
+    }
+    document.getElementsByClassName('footer_table')[0].style.display = 'table';
+  }
+  function DelAll() {
+    var element, i;
+    element = document.getElementsByClassName('parent');
+    for (i = 0; i < element.length; i++) element[i].style.display = 'inline-block';
+    element = document.getElementsByClassName('child');
+    for (i = 0; i < element.length; i++) element[i].style.display = 'none';
+    document.getElementsByClassName('footer_table')[0].style.display = 'none';
+  }
+</script>

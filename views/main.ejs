@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WHATOON</title>
+    <% include style.ejs %>
+  </head>
+  <body>
+    <div class="outter">
+      <div class="inner">
+        <div class="container">
+          <div class="inside_outter">
+            <div class="inner">
+              <div class="parent element" id="MLP" onclick="MLPChangeImage(this.id, Math.floor(Math.random() * 6));Clicked('MLP');">My Little Pony</div>
+              <div class="child child_MLP element" id="MLP_child_season1" onclick="Clicked('MLP_season1')">Season 1</div>
+              <div class="child child_MLP_season1 element" id="MLP_child_season1_ep01">Friendship Is Magic, Part 1</div>
+              <div class="footer_table">
+                <div class="footer_hover">
+                  <div class="footer" onclick="DelAll()">Home</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include script.ejs %>
+  </body>
+</html>
