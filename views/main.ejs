@@ -11,6 +11,9 @@
         <div class="container">
           <div class="inside_outter">
             <div class="inner">
+              <% if (Count) { %>
+              <%= Title[0] %>
+              <% } %>
               <div class="parent element" id="MLP" onclick="MLPChangeImage(this.id, Math.floor(Math.random() * 6));Clicked('MLP');">My Little Pony</div>
               <div class="child child_MLP element" id="MLP_child_season1" onclick="Clicked('MLP_season1')">Season 1</div>
               <div class="child child_MLP_season1 element" id="MLP_child_season1_ep01">Friendship Is Magic, Part 1</div>

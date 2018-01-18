@@ -1,6 +1,48 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+mongoose.connect(process.env.WHATOON_DB, { useMongoClient: true });
+var db = mongoose.connection;
+db.once('open', function() {
+  console.log("DB connected: successfully");
+});
+db.on('error', function(err) {
+  console.log("DB Unexpected ERROR: ", err);
+});
+
+var MainSchema = mongoose.Schema({
+  Name: String,
+  Count: Number,
+  Title: [String],
+  Property: [{
+    Name: String,
+    Seasons: Number,
+    Title: [String],
+    Property: [{
+      Name: String,
+      Episodes: Number,
+      Title: [String],
+      Uri: [String]
+    }],
+    Cover_Num: Number,
+    Cover_Img: [String],
+    Cover_Background: [String],
+    Cover_X: [Number],
+    Cover_Y: [Number]
+  }]
+});
+var MainData = mongoose.model('Main', MainSchema);
+MainData.findOne({Name: "Main"}, function(err, data) {
+  if (err) return console.log("Data Unexpected ERROR: ", err);
+  if (!data) {
+    MainData.create({Name: "Main", Count: 0, Title: [], Property: [] }, function(err, data) {
+      if (err) return console.log("Data Unexpected ERROR: ", err);
+      console.log("Data initialized: ", data);
+    });
+  }
+});
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -8,12 +50,11 @@ app.engine('html', require('ejs').__express);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(req, res) {
-  res.render('main');
-});
-
 app.get('*', function(req, res) {
-  res.render('main');
+  MainData.findOne({Name: "Main"}, function(err, data) {
+    if (err) return console.log("Data Unexpected ERROR: ", err);
+    res.render('main', data);
+  });
 });
 
 var port = process.env.PORT || 3000;
