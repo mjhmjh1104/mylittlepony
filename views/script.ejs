@@ -45,7 +45,6 @@
           element[j].style.lineWidth = '<%= Property[k].Property[j].Season_Width %>px';
           element[j].style.height = '<%= Property[k].Property[j].Season_Height %>px';
           element[j].style.lineHeight = '<%= Property[k].Property[j].Season_Height %>px';
-          alert('<%= Property[k].Property[j].Season_Height %>px');
           <% j++ %>
         }
       }
@@ -60,5 +59,14 @@
     element = document.getElementsByClassName('child');
     for (i = 0; i < element.length; i++) element[i].style.display = 'none';
     document.getElementsByClassName('footer_table')[0].style.display = 'none';
+  }
+  function ShowAnimate(C) {
+    <% for (var i = 0; i < Count; i++) {
+      for (var j = 0; j < Property[i].Seasons; j++) {
+        for (var k = 0; k < Property[i].Property[j].Episodes; k++) { %>
+          document.getElementById(C).style.display = 'none';
+          var element = document.getElementsByClassName(C + '_iframe');
+          for (var l = 0; l < element.length; l++) element[l].style.display = 'inline-block';
+    <% }}} %>
   }
 </script>
