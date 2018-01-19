@@ -64,8 +64,9 @@
     <% for (var i = 0; i < Count; i++) {
       for (var j = 0; j < Property[i].Seasons; j++) {
         for (var k = 0; k < Property[i].Property[j].Episodes; k++) { %>
-          document.getElementById(C).style.display = 'none';
-          var element = document.getElementsByClassName(C + '_iframe');
+          var element = document.getElementsByClassName('child');
+          for (var l = 0; l < element.length; l++) element[l].style.display = 'none';
+          element = document.getElementsByClassName(C + '_iframe');
           for (var l = 0; l < element.length; l++) {
             element[l].style.display = 'inline-block';
             element[l].style.height = (window.getComputedStyle(element[l]).getPropertyValue('width').substring(0, window.getComputedStyle(element[l]).getPropertyValue('width').length - 2) * <%= Property[i].Animate_Size %>) + 'px';
