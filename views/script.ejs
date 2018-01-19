@@ -6,7 +6,7 @@
   <% } %>
   function ChangeImage(Img, Size, Back, X, Y, Id) {
     document.getElementById(Id).style.backgroundImage = 'url("' + Img + '")';
-    document.getElementById(Id).style.backgroundSize = Size + '%';
+    document.getElementById(Id).style.backgroundSize = Size + '% auto';
     document.getElementById(Id).style.backgroundColor = '#' + Back;
     document.getElementById(Id).style.backgroundPosition = X + '% ' + Y + '%';
   }
