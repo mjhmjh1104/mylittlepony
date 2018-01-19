@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
   <head>
     <meta charset="utf-8">
@@ -18,7 +18,7 @@
               <div class="child child_<%= Property[i].Name %> element" id="<%= Property[i].Name %>_<%= Property[i].Property[j].Name %>" onclick="Clicked(this.id)"><%= Property[i].Title[j] %></div>
               <% for (var k = 0; k < Property[i].Property[j].Episodes; k++) { %>
               <div class="child child_<%= Property[i].Name %>_<%= Property[i].Property[j].Name %> element" id="<%= Property[i].Name %>_child_<%= Property[i].Property[j].Name %>_Ep<%= k + 1 %>" onclick="ShowAnimate(this.id)"><%= Property[i].Property[j].Title[k] %></div>
-              <div class="child <%= Property[i].Name %>_child_<%= Property[i].Property[j].Name %>_Ep<%= k + 1 %>_iframe iframe_cover" id="<%= Property[i].Name %>_child_<%= Property[i].Property[j].Name %>_Ep<%= k + 1 %>_cover">;
+              <div class="child <%= Property[i].Name %>_child_<%= Property[i].Property[j].Name %>_Ep<%= k + 1 %>_cover iframe_cover" id="<%= Property[i].Name %>_child_<%= Property[i].Property[j].Name %>_Ep<%= k + 1 %>_cover">
               <iframe class="child <%= Property[i].Name %>_child_<%= Property[i].Property[j].Name %>_Ep<%= k + 1 %>_iframe iframe" id="<%= Property[i].Name %>_child_<%= Property[i].Property[j].Name %>_Ep<%= k + 1 %>_iframe" src="<%= Property[i].Property[j].Uri[k] %>" allowfullscreen="true"></iframe></div>
               <% }}} %>
               <div class="footer_table">
