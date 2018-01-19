@@ -1,31 +1,57 @@
 <script type="text/javascript">
-  MLPChangeImage('MLP', Math.floor(Math.random() * 6));
-  function MLPChangeImage(Id, Number) {
-    document.getElementById(Id).id = "MLP_cover_" + (Number + 1);
+  <% for (var i = 0; i < Count; i++) { %>
+  <% var rand = Math.floor(Math.random() * Property[i].Cover_Num) %>
+  ChangeImage('<%= Property[i].Cover_Img[rand] %>' , '<%= Property[i].Cover_Size[rand] %>', '<%= Property[i].Cover_Background[rand] %>', '<%= Property[i].Cover_X[rand] %>', '<%= Property[i].Cover_Y[rand] %>', '<%= Property[i].Name %>');
+  <% } %>
+  function ChangeImage(Img, Size, Back, X, Y, Id) {
+    document.getElementById(Id).style.backgroundImage = 'url("' + Img + '")';
+    document.getElementById(Id).style.backgroundSize = Size + '%';
+    document.getElementById(Id).style.backgroundColor = '#' + Back;
+    document.getElementById(Id).style.backgroundPosition = X + '% ' + Y + '%';
   }
   function Clicked(C) {
     var element, i, j;
-    if (C == 'MLP') {
+    <% for (var k = 0; k < Count; k++) { %>
+    if (C == "<%= Property[k].Name %>") {
       element = document.getElementsByClassName('parent');
       for (i = 0; i < element.length; i++) element[i].style.display = 'none';
-      element = document.getElementsByClassName('child_MLP');
-      for (i = 0; i < element.length; i++) element[i].style.display = 'inline-block';
+      element = document.getElementsByClassName('child_<%= Property[k].Name %>');
+      <% var i = 0; %>
+      for (i = 0; i < element.length; i++) {
+        element[i].style.display = 'inline-block';
+        element[i].style.backgroundImage = 'url("<%= Property[k].Season_Cover %><%= i + 1 %>.png")';
+        element[i].style.backgroundColor = '#<%= Property[k].Property[i].Season_Background %>';
+        element[i].style.backgroundPosition = '<%= Property[k].Property[i].Season_X %>% <%= Property[k].Property[i].Season_Y %>%';
+        <% i++; %>
+      }
+      document.getElementsByClassName('footer_table')[0].style.display = 'table';
+      return;
     }
-    else {
-      for (i = 0; i < 1; i++) {
-        if (C == 'MLP_season' + (i + 1)) {
-          element = document.getElementsByClassName('child');
-          for (j = 0; j < element.length; j++) element[j].style.display = 'none';
-          element = document.getElementsByClassName('child_MLP_season1');
-          for (j = 0; j < element.length; j++) {
-            element[j].style.display = 'inline-block';
-            if (j < 9) element[j].style.backgroundImage = "url(../../../../../../img/MLP_1x0" + (j + 1) + ".png)";
-            else element[j].style.backgroundImage = "url(../../../../../../img/MLP_1x" + (j + 1) + ".png)";
-          }
+    <% } %>
+    <% for (var k = 0; k < Count; k++) { %>
+    <% var i = 0; %>
+    for (i = 0; i < <%= Property[k].Seasons %>; i++) {
+      if (C == "<%= Property[k].Name %>_<%= Property[k].Property[i].Name %>") {
+        element = document.getElementsByClassName('child');
+        for (j = 0; j < element.length; j++) element[j].style.display = 'none';
+        element = document.getElementsByClassName('child_<%= Property[k].Name %>_<%= Property[k].Property[i].Name %>');
+        <% var j = 0 %>
+        for (j = 0; j < element.length; j++) {
+          element[j].style.display = 'inline-block';
+          if (j < 9) element[j].style.backgroundImage = "url(<%= Property[k].Episode_Cover %>" + (i + 1) + "x0" + (j + 1) + ".png)";
+          else element[j].style.backgroundImage = "url(<%= Property[k].Episode_Cover %>" + (i + 1) + "x" + (j + 1) + ".png)";
+          element[j].style.backgroundColor = "#<%= Property[k].Property[j].Season_Background %>";
+          element[j].style.width = '<%= Property[k].Property[j].Season_Width %>px';
+          element[j].style.lineWidth = '<%= Property[k].Property[j].Season_Width %>px';
+          element[j].style.height = '<%= Property[k].Property[j].Season_Height %>px';
+          element[j].style.lineHeight = '<%= Property[k].Property[j].Season_Height %>px';
+          alert('<%= Property[k].Property[j].Season_Height %>px');
+          <% j++ %>
         }
       }
+      <% i++; %>
     }
-    document.getElementsByClassName('footer_table')[0].style.display = 'table';
+    <% } %>
   }
   function DelAll() {
     var element, i;

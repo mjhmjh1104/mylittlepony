@@ -15,7 +15,6 @@ db.on('error', function(err) {
 var MainSchema = mongoose.Schema({
   Name: String,
   Count: Number,
-  Title: [String],
   Property: [{
     Name: String,
     Seasons: Number,
@@ -24,14 +23,23 @@ var MainSchema = mongoose.Schema({
       Name: String,
       Episodes: Number,
       Title: [String],
-      Uri: [String]
+      Uri: [String],
+      Season_Background: String,
+      Season_X: Number,
+      Season_Y: Number,
+      Season_Width: Number,
+      Season_Height: Number
     }],
     Cover_Num: Number,
     Cover_Img: [String],
     Cover_Background: [String],
+    Cover_Size: [Number],
     Cover_X: [Number],
-    Cover_Y: [Number]
-  }]
+    Cover_Y: [Number],
+    Episode_Cover: String,
+    Season_Cover: String
+  }],
+  Title: [String]
 });
 var MainData = mongoose.model('Main', MainSchema);
 MainData.findOne({Name: "Main"}, function(err, data) {

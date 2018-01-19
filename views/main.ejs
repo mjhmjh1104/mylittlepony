@@ -11,12 +11,13 @@
         <div class="container">
           <div class="inside_outter">
             <div class="inner">
-              <% if (Count) { %>
-              <%= Title[0] %>
-              <% } %>
-              <div class="parent element" id="MLP" onclick="MLPChangeImage(this.id, Math.floor(Math.random() * 6));Clicked('MLP');">My Little Pony</div>
-              <div class="child child_MLP element" id="MLP_child_season1" onclick="Clicked('MLP_season1')">Season 1</div>
-              <div class="child child_MLP_season1 element" id="MLP_child_season1_ep01">Friendship Is Magic, Part 1</div>
+              <% for (var i = 0; i < Count; i++) { %>
+              <% var rand = Math.floor(Math.random() * Property[i].Cover_Num) %>
+              <div class="parent element" id= <%= Property[i].Name %> onclick="ChangeImage('<%= Property[i].Cover_Img[rand] %>' , '<%= Property[i].Cover_Size[rand] %>', '<%= Property[i].Cover_Background[rand] %>', '<%= Property[i].Cover_X[rand] %>', '<%= Property[i].Cover_Y[rand] %>', '<%= Property[i].Name %>');Clicked(this.id);"><%= Title[i] %></div>
+              <% for (var j = 0; j < Property[i].Seasons; j++) { %>
+              <div class="child child_<%= Property[i].Name %> element" id="<%= Property[i].Name %>_<%= Property[i].Property[j].Name %>" onclick="Clicked(this.id)"><%= Property[i].Title[j] %></div>
+              <% for (var k = 0; k < Property[i].Property[j].Episodes; k++) { %>
+              <div class="child child_<%= Property[i].Name %>_<%= Property[i].Property[j].Name %> element" id="<%= Property[i].Name %>_child_<%= Property[i].Property[j].Name %>_<%= k %>"><%= Property[i].Property[j].Title[k] %></div> <% }}} %>
               <div class="footer_table">
                 <div class="footer_hover">
                   <div class="footer" onclick="DelAll()">Home</div>
