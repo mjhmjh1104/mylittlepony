@@ -12,8 +12,7 @@
           <div class="inside_outter">
             <div class="inner" style="padding-bottom: 0px;">
               <% for (var i = 0; i < Count; i++) { %>
-              <% var rand = Math.floor(Math.random() * Property[i].Cover_Num) %>
-              <div class="parent element" id= <%= Property[i].Name %> onclick="ChangeImage('<%= Property[i].Cover_Img[rand] %>' , '<%= Property[i].Cover_Size[rand] %>', '<%= Property[i].Cover_Background[rand] %>', '<%= Property[i].Cover_X[rand] %>', '<%= Property[i].Cover_Y[rand] %>', '<%= Property[i].Name %>');Clicked(this.id);"><%= Title[i] %></div>
+              <div class="parent element" id= <%= Property[i].Name %> onclick="ChangeImage();Clicked(this.id);"><%= Title[i] %></div>
               <% for (var j = 0; j < Property[i].Seasons; j++) { %>
               <div class="child child_<%= Property[i].Name %> element" id="<%= Property[i].Name %>_<%= Property[i].Property[j].Name %>" onclick="Clicked(this.id)"><%= Property[i].Title[j] %></div>
               <% for (var k = 0; k < Property[i].Property[j].Episodes; k++) { %>
