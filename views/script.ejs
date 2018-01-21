@@ -2,16 +2,13 @@
   ChangeImage();
   function ChangeImage() {
     <% for (var i = 0; i < Count; i++) { %>
-      <% var rand = rand(120) % Property[i].Cover_Num; %>
+      <% var rand = Math.floor(Math.random() * Property[i].Cover_Num); %>
     document.getElementById('<%= Property[i].Name %>').style.backgroundImage = 'url("<%= Property[i].Cover_Img[rand] %>")';
     document.getElementById('<%= Property[i].Name %>').style.backgroundSize = '<%= Property[i].Cover_Size[rand] %>% auto';
     document.getElementById('<%= Property[i].Name %>').style.backgroundColor = '#<%= Property[i].Cover_Background[rand] %>';
     document.getElementById('<%= Property[i].Name %>').style.backgroundPosition = '<%= Property[i].Cover_X[rand] %>% <%= Property[i].Cover_Y[rand] %>%';
     <% } %>
   }
-  <% function rand(Num) {
-    return Math.floor(Math.random() * (Num + 0));
-  } %>
   function Clicked(C) {
     var element, i, j;
     <% for (var k = 0; k < Count; k++) { %>
