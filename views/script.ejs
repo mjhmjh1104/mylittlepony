@@ -3,10 +3,11 @@
   function ChangeImage() {
     <% for (var i = 0; i < Count; i++) { %>
       <% var rand = Math.floor(Math.random() * Property[i].Cover_Num); %>
-    document.getElementById('<%= Property[i].Name %>').style.backgroundImage = 'url("<%= Property[i].Cover_Img[rand] %>")';
-    document.getElementById('<%= Property[i].Name %>').style.backgroundSize = '<%= Property[i].Cover_Size[rand] %>% auto';
-    document.getElementById('<%= Property[i].Name %>').style.backgroundColor = '#<%= Property[i].Cover_Background[rand] %>';
-    document.getElementById('<%= Property[i].Name %>').style.backgroundPosition = '<%= Property[i].Cover_X[rand] %>% <%= Property[i].Cover_Y[rand] %>%';
+    var Id = '<%= Property[i].Name %>';
+    document.getElementById(Id).style.backgroundImage = 'url("<%= Property[i].Cover_Img[rand] %>")';
+    document.getElementById(Id).style.backgroundSize = '<%= Property[i].Cover_Size[rand] %>% auto';
+    document.getElementById(Id).style.backgroundColor = '#<%= Property[i].Cover_Background[rand]%>';
+    document.getElementById(Id).style.backgroundPosition = '<%= Property[i].Cover_X[rand] %>% <%= Property[i].Cover_Y[rand] %>%';
     <% } %>
   }
   function Clicked(C) {
@@ -16,40 +17,20 @@
       element = document.getElementsByClassName('parent');
       for (i = 0; i < element.length; i++) element[i].style.display = 'none';
       element = document.getElementsByClassName('child_<%= Property[k].Name %>');
-      <% var i = 0; %>
-      for (i = 0; i < element.length; i++) {
-        element[i].style.display = 'inline-block';
-        element[i].style.backgroundImage = 'url("<%= Property[k].Season_Cover %><%= i + 1 %>.png")';
-        element[i].style.backgroundColor = '#<%= Property[k].Property[i].Season_Background %>';
-        element[i].style.backgroundPosition = '<%= Property[k].Property[i].Season_X %>% <%= Property[k].Property[i].Season_Y %>%';
-        <% i++; %>
-      }
+      for (i = 0; i < element.length; i++) element[i].style.display = 'inline-block';
       document.getElementsByClassName('footer_table')[0].style.display = 'table';
       return;
     }
     <% } %>
     <% for (var k = 0; k < Count; k++) { %>
-    <% var i = 0; %>
-    for (i = 0; i < <%= Property[k].Seasons %>; i++) {
+    <% for (var i = 0; i < Property[k].Seasons; i++) { %>
       if (C == "<%= Property[k].Name %>_<%= Property[k].Property[i].Name %>") {
         element = document.getElementsByClassName('child');
         for (j = 0; j < element.length; j++) element[j].style.display = 'none';
         element = document.getElementsByClassName('child_<%= Property[k].Name %>_<%= Property[k].Property[i].Name %>');
-        <% var j = 0 %>
-        for (j = 0; j < element.length; j++) {
-          element[j].style.display = 'inline-block';
-          if (j < 9) element[j].style.backgroundImage = "url(<%= Property[k].Episode_Cover %>" + (i + 1) + "x0" + (j + 1) + ".png)";
-          else element[j].style.backgroundImage = "url(<%= Property[k].Episode_Cover %>" + (i + 1) + "x" + (j + 1) + ".png)";
-          element[j].style.backgroundColor = "#<%= Property[k].Property[j].Season_Background %>";
-          element[j].style.width = '<%= Property[k].Property[j].Season_Width %>px';
-          element[j].style.lineWidth = '<%= Property[k].Property[j].Season_Width %>px';
-          element[j].style.height = '<%= Property[k].Property[j].Season_Height %>px';
-          element[j].style.lineHeight = '<%= Property[k].Property[j].Season_Height %>px';
-          <% j++ %>
-        }
-      }
-      <% i++; %>
+        for (j = 0; j < element.length; j++) element[j].style.display = 'inline-block';
     }
+    <% } %>
     <% } %>
   }
   function DelAll() {
