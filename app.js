@@ -19,6 +19,8 @@ var MainSchema = mongoose.Schema({
     Name: String,
     Seasons: Number,
     Title: [String],
+    Width: [Number],
+    Height: [Number],
     Property: [{
       Name: String,
       Episodes: Number,
