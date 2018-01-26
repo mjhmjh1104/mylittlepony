@@ -29,7 +29,8 @@ var MainSchema = mongoose.Schema({
       Season_Y: Number,
       Season_Width: [Number],
       Season_Height: [Number],
-      Animate_Size: [Number]
+      Animate_Size: [Number],
+      Cover_Zoom: Number
     }],
     Cover_Num: Number,
     Cover_Img: [String],
