@@ -50,7 +50,7 @@
           element = document.getElementsByClassName(C + '_iframe');
           for (var l = 0; l < element.length; l++) {
             element[l].style.display = 'inline-block';
-            element[l].style.height = (window.getComputedStyle(element[l]).getPropertyValue('width').substring(0, window.getComputedStyle(element[l]).getPropertyValue('width').length - 2) * <%= Property[i].Animate_Size %>) + 'px';
+            element[l].style.height = (window.getComputedStyle(element[l]).getPropertyValue('width').substring(0, window.getComputedStyle(element[l]).getPropertyValue('width').length - 2) * <%= Property[i].Property[j].Animate_Size[k] %>) + 'px';
           }
           element = document.getElementsByClassName(C + '_cover');
           for (var l = 0; l < element.length; l++) {

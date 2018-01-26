@@ -27,8 +27,9 @@ var MainSchema = mongoose.Schema({
       Season_Background: String,
       Season_X: Number,
       Season_Y: Number,
-      Season_Width: Number,
-      Season_Height: Number
+      Season_Width: [Number],
+      Season_Height: [Number],
+      Animate_Size: [Number]
     }],
     Cover_Num: Number,
     Cover_Img: [String],
@@ -37,8 +38,7 @@ var MainSchema = mongoose.Schema({
     Cover_X: [Number],
     Cover_Y: [Number],
     Episode_Cover: String,
-    Season_Cover: String,
-    Animate_Size: Number
+    Season_Cover: String
   }],
   Title: [String]
 });
