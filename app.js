@@ -75,7 +75,7 @@ app.get('/', function(req, res) {
 app.get('/ani', function(req, res) {
   MainData.findOne({Name: "Main"}, function(err, data) {
     if (err) return console.log("Data Unexpected ERROR: ", err);
-    res.render('ani', {data:data,num:req.query.ani});
+    res.render('ani', {data:data, i: req.query.ani});
   });
 });
 
@@ -90,6 +90,13 @@ app.get('/episode', function(req, res) {
   MainData.findOne({Name: "Main"}, function(err, data) {
     if (err) return console.log("Data Unexpected ERROR: ", err);
     res.render('episode', {data:data, i: req.query.ani, j: req.query.s, k: req.query.e});
+  });
+});
+
+app.get('/song', function(req, res) {
+  MainData.findOne({Name: "Main"}, function(err, data) {
+    if (err) return console.log("Data Unexpected ERROR: ", err);
+    res.render('song', {data:data, i: req.query.ani, j: req.query.s});
   });
 });
 
