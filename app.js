@@ -54,7 +54,18 @@ var MainSchema = mongoose.Schema({
       Start_sec: Number,
       Length: String,
       Lead_Num: Number,
-      Lead: [Number]
+      Lead: [Number],
+      Reprise: Number,
+      R1_Start_min: Number,
+      R1_Start_sec: Number,
+      R2_Start_min: Number,
+      R2_Start_sec: Number,
+      R1_Length: String,
+      R2_Length: String,
+      R1_Lead_Num: Number,
+      R2_Lead_Num: Number,
+      R1_Lead: [Number],
+      R2_Lead: [Number]
     }]
   }],
   Title: [String]
@@ -109,6 +120,13 @@ app.get('/song', function(req, res) {
   MainData.findOne({Name: "Main"}, function(err, data) {
     if (err) return console.log("Data Unexpected ERROR: ", err);
     res.render('song', {data:data, i: req.query.ani, j: req.query.s});
+  });
+});
+
+app.get('/reprise', function(req, res) {
+  MainData.findOne({Name: "Main"}, function(err, data) {
+    if (err) return console.log("Data Unexpected ERROR: ", err);
+    res.render('reprise', {data:data, i: req.query.ani, k: req.query.k, t1: req.query.t1, t2: req.query.t2});
   });
 });
 
