@@ -11,7 +11,15 @@
         <div class="container">
           <div class="inside_outter">
             <div class="inner" style="padding-bottom: 0px;">
-              <h1>Preparing</h1>
+              <% var gradienttmp; %>
+              <% for (var k = 0; k < data.Property[i].Songs_Num; k++) { %>
+                <% gradienttmp = "linear-gradient(to right, #" + data.Property[i].Cover_Background[data.Property[i].Songs[k].Lead[0] - 1] + " 0%, "; %>
+                <% for (var l = 1; l < data.Property[i].Songs[k].Lead_Num; l++) { %>
+                  <% gradienttmp = gradienttmp + "#" + data.Property[i].Cover_Background[data.Property[i].Songs[k].Lead[l - 1] - 1] + " " + (100.0 / data.Property[i].Songs[k].Lead_Num * l) + "%, #" + data.Property[i].Cover_Background[data.Property[i].Songs[k].Lead[l] - 1] + " " + (100.0 / data.Property[i].Songs[k].Lead_Num * l) + "%, "; %>
+                <% } %>
+                <% gradienttmp = gradienttmp + "#" + data.Property[i].Cover_Background[data.Property[i].Songs[k].Lead[data.Property[i].Songs[k].Lead_Num - 1] - 1] + " 100%);"; %>
+              <div class="song" style="background: <%= gradienttmp %>", onclick="window.location='/episode?ani=<%= i %>&s=<%= data.Property[i].Songs[k].Season - 1 %>&e=<%= data.Property[i].Songs[k].Episode - 1 %>&t=<%= data.Property[i].Songs[k].Start_min * 60 + data.Property[i].Songs[k].Start_sec %>'"><span class="inside_song"><%= data.Property[i].Songs[k].Title %><br /><%= data.Property[i].Songs[k].Length %></span></div>
+              <% } %>
             </div>
           </div>
         </div>

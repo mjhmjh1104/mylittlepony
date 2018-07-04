@@ -44,7 +44,18 @@ var MainSchema = mongoose.Schema({
     Cover_X: [Number],
     Cover_Y: [Number],
     Episode_Cover: String,
-    Season_Cover: String
+    Season_Cover: String,
+    Songs_Num: Number,
+    Songs: [{
+      Title: String,
+      Season: Number,
+      Episode: Number,
+      Start_min: Number,
+      Start_sec: Number,
+      Length: String,
+      Lead_Num: Number,
+      Lead: [Number]
+    }]
   }],
   Title: [String]
 });
@@ -89,7 +100,8 @@ app.get('/season', function(req, res) {
 app.get('/episode', function(req, res) {
   MainData.findOne({Name: "Main"}, function(err, data) {
     if (err) return console.log("Data Unexpected ERROR: ", err);
-    res.render('episode', {data:data, i: req.query.ani, j: req.query.s, k: req.query.e});
+    if (req.query.t) res.render('episode', {data:data, i: req.query.ani, j: req.query.s, k: req.query.e, t: req.query.t});
+    else res.render('episode', {data:data, i: req.query.ani, j: req.query.s, k:req.query.e, t: 0});
   });
 });
 
