@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect(process.env.WHATOON_DB, { useMongoClient: true });
+mongoose.connect(process.env.WHATOON_DB || 'mongodb://' + process.env.MONGO_DB + '@ds249727.mlab.com:49727/whatoon', { useMongoClient: true });
 var db = mongoose.connection;
 db.once('open', function() {
   console.log("DB connected: successfully");
