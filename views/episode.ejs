@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>[<%= parseInt(j) + 1 %>x<%= (parseInt(k) + 1) < 10 ? "0" + (parseInt(k) + 1) : (parseInt(k) + 1) %>] - <%= data.Property[i].Property[j].Title[k] %></title>
+    <title>[<%= parseInt(j) + 1 %>x<%= (parseInt(k) + 1) < 10 ? "0" + (parseInt(k) + 1) : (parseInt(k) + 1) %>] <%= data.Property[i].Name %> FiM - <%= data.Property[i].Property[j].Title[k] %></title>
     <% include style.ejs %>
   </head>
   <body>
