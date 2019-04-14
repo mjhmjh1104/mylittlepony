@@ -130,6 +130,10 @@ app.get('/reprise', function(req, res) {
   });
 });
 
+app.get('*', function(req, res) {
+  res.render('404');
+})
+
 var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('Server Running');
