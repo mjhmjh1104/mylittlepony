@@ -71,10 +71,19 @@
       border-radius: 2px;
       padding: 30px;
     }
-  } @media (max-width: 1060px) {
+  } @media (max-width: 1060px) and (min-width: 521px) {
     .container {
       display: inline-block;
       width: calc(100% - 60px);
+      height: calc(100% - 5px);
+      background-color: rgba(255, 255, 255, .7);
+      border: 0;
+      padding: 30px;
+    }
+  } @media (max-width: 520px) {
+    .container {
+      display: inline-block;
+      width: 460px;
       height: calc(100% - 5px);
       background-color: rgba(255, 255, 255, .7);
       border: 0;
@@ -92,6 +101,7 @@
     color: rgba(0, 0, 0, 0);
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
   }
   .text {
     width: 200px;
@@ -137,6 +147,7 @@
     border: 0;
     border-radius: 2px;
     background-color: #B3E7F6;
+    cursor: pointer;
   }
   .songs {
     display: inline-block;
@@ -167,6 +178,7 @@
     background-color: rgb(255, 255, 255);
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
   }
   .inside_song {
     display: table-cell;
