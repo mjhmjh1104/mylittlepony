@@ -14,7 +14,12 @@
             <div class="inner" style="padding-bottom: 0px;">
               <% include head.ejs %>
               <% for (var i = 0; i < Count; i++) { %>
-              <div class="parent element" id='<%= Property[i].Name %>' onclick="window.location='/ani?ani=<%= i %>';"><div class="text"><%- Title[i] %></div></div>
+              <div class="parent element" id='<%= Property[i].Name %>' onclick="window.location='/ani?ani=<%= i %>';">
+                <div class="appearBackground">
+                  <div class="blackBackground"></div>
+                  <div class="text"><%- Title[i] %></div>
+                </div>
+              </div>
               <% } %>
             </div>
           </div>

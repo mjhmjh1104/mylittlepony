@@ -14,9 +14,19 @@
             <div class="inner" style="padding-bottom: 0px;">
               <% for (var k = 0; k < data.Property[i].Property[j].Episodes; k++) { %>
               <% if (k < 9) { %>
-              <div class="child child_<%= data.Property[i].Name %>_<%= data.Property[i].Property[j].Name %> element" id="<%= data.Property[i].Name %>_child_<%= data.Property[i].Property[j].Name %>_Ep<%= k + 1 %>" onclick="window.location='/episode?ani=<%= i %>&s=<%= j %>&e=<%= k %>';" style="background-image:url('.<%= data.Property[i].Episode_Cover %><%= parseInt(j) + 1 %>x0<%= k + 1 %>.png');background-color:#<%= data.Property[i].Property[j].Season_Background %>;width:<%= data.Property[i].Property[j].Season_Width[k] %>px;height:<%= data.Property[i].Property[j].Season_Height[k] %>px;background-position: <%= data.Property[i].Property[j].Episode_X[k] %>% <%= data.Property[i].Property[j].Episode_Y[k] %>%;background-size: <%= data.Property[i].Property[j].Episode_Zoom[k] %>%;"><div class="text" style="width:<%= data.Property[i].Property[j].Season_Width[k] %>px;height:<%= data.Property[i].Property[j].Season_Height[k] %>px;"><%= data.Property[i].Property[j].Title[k] %></div></div>
+              <div class="child child_<%= data.Property[i].Name %>_<%= data.Property[i].Property[j].Name %> element" id="<%= data.Property[i].Name %>_child_<%= data.Property[i].Property[j].Name %>_Ep<%= k + 1 %>" onclick="window.location='/episode?ani=<%= i %>&s=<%= j %>&e=<%= k %>';" style="background-image:url('.<%= data.Property[i].Episode_Cover %><%= parseInt(j) + 1 %>x0<%= k + 1 %>.png');background-color:#<%= data.Property[i].Property[j].Season_Background %>;width:<%= data.Property[i].Property[j].Season_Width[k] %>px;height:<%= data.Property[i].Property[j].Season_Height[k] %>px;background-position: <%= data.Property[i].Property[j].Episode_X[k] %>% <%= data.Property[i].Property[j].Episode_Y[k] %>%;background-size: <%= data.Property[i].Property[j].Episode_Zoom[k] %>%;">
+                <div class="appearBackground">
+                  <div class="blackBackground"></div>
+                  <div class="text"><%- data.Property[i].Property[j].Title[k] %></div>
+                </div>
+              </div>
               <% } else { %>
-              <div class="child child_<%= data.Property[i].Name %>_<%= data.Property[i].Property[j].Name %> element" id="<%= data.Property[i].Name %>_child_<%= data.Property[i].Property[j].Name %>_Ep<%= k + 1 %>" onclick="window.location='/episode?ani=<%= i %>&s=<%= j %>&e=<%= k %>';" style="background-image:url('.<%= data.Property[i].Episode_Cover %><%= parseInt(j) + 1 %>x<%= k + 1 %>.png');background-color:#<%= data.Property[i].Property[j].Season_Background %>;width:<%= data.Property[i].Property[j].Season_Width[k] %>px;height:<%= data.Property[i].Property[j].Season_Height[k] %>px;background-position: <%= data.Property[i].Property[j].Episode_X[k] %>% <%= data.Property[i].Property[j].Episode_Y[k] %>%;background-size: <%= data.Property[i].Property[j].Episode_Zoom[k] %>%;"><div class="text" style="width:<%= data.Property[i].Property[j].Season_Width[k] %>px;height:<%= data.Property[i].Property[j].Season_Height[k] %>px;"><%= data.Property[i].Property[j].Title[k] %></div></div>
+              <div class="child child_<%= data.Property[i].Name %>_<%= data.Property[i].Property[j].Name %> element" id="<%= data.Property[i].Name %>_child_<%= data.Property[i].Property[j].Name %>_Ep<%= k + 1 %>" onclick="window.location='/episode?ani=<%= i %>&s=<%= j %>&e=<%= k %>';" style="background-image:url('.<%= data.Property[i].Episode_Cover %><%= parseInt(j) + 1 %>x<%= k + 1 %>.png');background-color:#<%= data.Property[i].Property[j].Season_Background %>;width:<%= data.Property[i].Property[j].Season_Width[k] %>px;height:<%= data.Property[i].Property[j].Season_Height[k] %>px;background-position: <%= data.Property[i].Property[j].Episode_X[k] %>% <%= data.Property[i].Property[j].Episode_Y[k] %>%;background-size: <%= data.Property[i].Property[j].Episode_Zoom[k] %>%;">
+                <div class="appearBackground">
+                  <div class="blackBackground"></div>
+                  <div class="text"><%- data.Property[i].Property[j].Title[k] %></div>
+                </div>
+              </div>
               <% } %>
               <% } %>
               <div class="footer_table">

@@ -1,6 +1,5 @@
 <script type="text/javascript">
-  ChangeImage();
-  function ChangeImage() {
+  (function ChangeImage() {
     <% for (var i = 0; i < Count; i++) { %>
       <% var rand = Math.floor(Math.random() * Property[i].Cover_Num); %>
     var Id = '<%= Property[i].Name %>';
@@ -9,5 +8,5 @@
     document.getElementById(Id).style.backgroundColor = '#<%= Property[i].Cover_Background[rand]%>';
     document.getElementById(Id).style.backgroundPosition = '<%= Property[i].Cover_X[rand] %>% <%= Property[i].Cover_Y[rand] %>%';
     <% } %>
-  }
+  })();
 </script>

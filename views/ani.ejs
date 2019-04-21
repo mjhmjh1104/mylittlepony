@@ -14,7 +14,12 @@
             <div class="inner" style="padding-bottom: 0px;">
               <% include head.ejs %>
               <% for (var j = 0; j < data.Property[i].Seasons; j++) { %>
-              <div class="child child_<%= data.Property[i].Name %> element" id="<%= data.Property[i].Name %>_<%= data.Property[i].Property[j].Name %>" onclick="window.location='/season?ani=<%= i %>&s=<%= j %>';" style="background-image:url('<%= data.Property[i].Season_Cover %><%= j + 1 %>.png');background-color:#<%= data.Property[i].Property[j].Season_Background %>;background-position:<%= data.Property[i].Property[j].Season_X %>% <%= data.Property[i].Property[j].Season_Y %>%;background-size:<%= data.Property[i].Property[j].Cover_Zoom %>%;width:<%= data.Property[i].Width[j] %>px;height:<%= data.Property[i].Height[j] %>px;"><div class="text" style="width:<%= data.Property[i].Width[j] %>px;height:<%= data.Property[i].Height[j] %>px;"><%= data.Property[i].Title[j] %></div></div>
+              <div class="child child_<%= data.Property[i].Name %> element" id="<%= data.Property[i].Name %>_<%= data.Property[i].Property[j].Name %>" onclick="window.location='/season?ani=<%= i %>&s=<%= j %>';" style="background-image:url('<%= data.Property[i].Season_Cover %><%= j + 1 %>.png');background-color:#<%= data.Property[i].Property[j].Season_Background %>;background-position:<%= data.Property[i].Property[j].Season_X %>% <%= data.Property[i].Property[j].Season_Y %>%;background-size:<%= data.Property[i].Property[j].Cover_Zoom %>%;width:<%= data.Property[i].Width[j] %>px;height:<%= data.Property[i].Height[j] %>px;">
+                <div class="appearBackground">
+                  <div class="blackBackground"></div>
+                  <div class="text"><%- data.Property[i].Title[j] %></div>
+                </div>
+              </div>
               <% } %>
               <div class="footer_table">
                 <div class="footer_hover">
